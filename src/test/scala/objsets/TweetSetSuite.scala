@@ -175,5 +175,35 @@ class TweetSetSuite extends FunSuite {
     }
   }
 
+  /*
+  filter and union: tweets with 321 and 205 retweets
+  [Observed Error] Set() had size 0 instead of expected size 1 exactly one such tweet
+  [Lost Points] 10
+   */
+  test("filter and union: tweets with 321 and 205 retweets"){
+    new TestSets {
 
+    }
+  }
+  /*
+  [Test Description] filter and union: tweets with 321 and 205 retweets
+  [Observed Error] Set() had size 0 instead of expected size 1 exactly one such tweet
+  [Lost Points] 10
+   */
+  test("filter and union: tweets with 321 and 205 retweets"){
+    new TestSets {
+
+    }
+  }
+  /*
+  [Test Description] trending: google and apple tweets
+  [Observed Error] A fatal exception has been thrown: java.lang.StackOverflowError
+  [Lost Points] 10
+   */
+  test("trending: google and apple tweets"){
+    new TestSets {
+
+
+    }
+  }
 }

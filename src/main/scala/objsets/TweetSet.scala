@@ -636,12 +636,12 @@ object GoogleVsApple {
       retorno
     }
   }
-  lazy val googleTweets: TweetSet = (toTweetList(List(
-    new Tweet("joaodasilva", "nexus Galaxy wow", 34),
-    new Tweet("mariagertrudes", "Android nexus wow", 52)))).toTweetSet
-  lazy val appleTweets: TweetSet = (toTweetList(List(
-    new Tweet("anadasilva", "iOS iPad wow", 51),
-    new Tweet("antoniosantos", "iPhone iOS wow", 45)))).toTweetSet
+  val googleTweet1 = new Tweet("joaodasilva", "nexus Galaxy wow", 34)
+  val googleTweet2 = new Tweet("mariagertrudes", "Android nexus wow", 52)
+  val appleTweet1 = new Tweet("anadasilva", "iOS iPad wow", 51)
+  val appleTweet2 = new Tweet("antoniosantos", "iPhone iOS wow", 45)
+  lazy val googleTweets: TweetSet = ((new Empty).incl(googleTweet1)).incl(googleTweet2)
+  lazy val appleTweets: TweetSet = ((new Empty).incl(appleTweet1)).incl(appleTweet2)
 
 
   
