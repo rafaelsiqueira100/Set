@@ -18,20 +18,23 @@ class TweetSetSuite extends FunSuite {
   }
 
   def toTweetList(toConvert:List[Tweet]): TweetList = {
-    if(toConvert == null || toConvert == List())
+    if(toConvert == List())
       Nil
     else
-      new Cons(toConvert.head, toTweetList(toConvert.tail))
+      if(toConvert.tail == List())
+        new Cons(toConvert.head, Nil)
+      else
+        new Cons(toConvert.head, toTweetList(toConvert.tail))
   }
 
   def mostRetweeted(tweet1: Tweet, tweet2: Tweet):Tweet =
     if(tweet1 == null)
       if(tweet2==null) null else tweet2
     else
-    if(tweet2==null)
-      tweet1
-    else
-    if(tweet1.retweets>tweet2.retweets) tweet1 else tweet2
+      if(tweet2==null)
+        tweet1
+      else
+        if(tweet1.retweets>tweet2.retweets) tweet1 else tweet2
 
   def asSet(tweets: TweetSet): Set[Tweet] = {
     var res = Set[Tweet]()
@@ -180,30 +183,17 @@ class TweetSetSuite extends FunSuite {
   [Observed Error] Set() had size 0 instead of expected size 1 exactly one such tweet
   [Lost Points] 10
    */
-  test("filter and union: tweets with 321 and 205 retweets"){
-    new TestSets {
 
-    }
-  }
   /*
-  [Test Description] filter and union: tweets with 321 and 205 retweets
-  [Observed Error] Set() had size 0 instead of expected size 1 exactly one such tweet
-  [Lost Points] 10
+[Test Description] filter and trending: tweets with 321 and 205 retweets
+[Observed Error] Set(myTweet) had size 1 instead of expected size 2 exactly two such tweets
+[Lost Points] 10
    */
-  test("filter and union: tweets with 321 and 205 retweets"){
-    new TestSets {
 
-    }
-  }
   /*
   [Test Description] trending: google and apple tweets
   [Observed Error] A fatal exception has been thrown: java.lang.StackOverflowError
   [Lost Points] 10
    */
-  test("trending: google and apple tweets"){
-    new TestSets {
 
-
-    }
-  }
 }

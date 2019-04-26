@@ -178,7 +178,7 @@ class Empty extends TweetSet {
       println("saiu Empty.equals")
       false
     }
-    else if(!(other.isInstanceOf[Empty])) {
+    else if (! (other.isInstanceOf[Empty] ) ) {
       println("saiu Empty.equals")
       false
     }
@@ -443,15 +443,22 @@ class NonEmpty(elem: Tweet, left: TweetSet, right: TweetSet) extends TweetSet {
   def toTweetList(toConvert:List[Tweet]): TweetList = {
 
     println("entrou NonEmpty.toTweetList(List[Tweet])")
-    if(toConvert == null || toConvert == List()) {
+    if(toConvert == List()) {
       val retorno = Nil
       println("saiu NonEmpty.toTweetList(List[Tweet])")
       retorno
     }
     else {
-      val retorno = new Cons(toConvert.head, toTweetList(toConvert.tail))
-      println("saiu NonEmpty.toTweetList(List[Tweet])")
-      retorno
+      if (toConvert.tail == List()) {
+        val retorno = new Cons(toConvert.head, Nil)
+        println("saiu NonEmpty.toTweetList(List[Tweet])")
+        retorno
+      }
+      else {
+        val retorno = new Cons(toConvert.head, toTweetList(toConvert.tail))
+        println("saiu NonEmpty.toTweetList(List[Tweet])")
+        retorno
+      }
     }
   }
 
@@ -561,7 +568,13 @@ object Nil extends TweetList {
 
 class Cons(val head: Tweet, val tail: TweetList) extends TweetList {
   def isEmpty = false
-  def toTweetSet = new NonEmpty(head, new Empty, tail.toTweetSet)
+  def toTweetSet: TweetSet = {
+    if(tail == Nil)
+      new NonEmpty(head, new Empty, new Empty)
+    else
+      new NonEmpty(head, new Empty, tail.toTweetSet)
+
+  }
   override def equals(obj: Any): Boolean = {
 
     println("entrou Cons.equals")
@@ -625,15 +638,22 @@ object GoogleVsApple {
   val apple = List("ios", "iOS", "iphone", "iPhone", "ipad", "iPad")
   def toTweetList(toConvert:List[Tweet]): TweetList = {
     println("entrou GoogleVSApple.toTweetList")
-    if(toConvert == null || toConvert == List()) {
+    if(toConvert == List()) {
       val retorno = Nil
       println("saiu GoogleVSApple.toTweetList")
       retorno
     }
     else {
-      val retorno = new Cons(toConvert.head, toTweetList(toConvert.tail))
-      println("saiu GoogleVSApple.toTweetList")
-      retorno
+      if(toConvert.tail == List()) {
+        val retorno = new Cons(toConvert.head, Nil)
+        println("saiu GoogleVSApple.toTweetList")
+        retorno
+      }
+      else {
+        val retorno = new Cons(toConvert.head, toTweetList(toConvert.tail))
+        println("saiu GoogleVSApple.toTweetList")
+        retorno
+      }
     }
   }
   val googleTweet1 = new Tweet("joaodasilva", "nexus Galaxy wow", 34)
